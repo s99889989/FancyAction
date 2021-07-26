@@ -1,0 +1,6 @@
+name: FancyAction
+version: @version@
+main: com.daxton.fancyaction.FancyAction
+api-version: 1.16
+prefix: FancyAction
+authors: [ s99889989 ]
