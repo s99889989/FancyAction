@@ -1,0 +1,9 @@
+LogMessage:
+  Reload: '§aLeia novamente o arquivo de configuração.'
+  Disable: '§4Desinstalação do FancyAction.'
+  LoadFancyCore: '§aFancyCore carregado.'
+  UnLoadFancyCore:
+    - '§4*** FancyCore não está instalado ou não está habilitado. ***'
+    - '§4*** FancyAction será desativado. ***'
+OpMessage:
+  Reload: '§e[FancyAction] §aLeia novamente o arquivo de configuração.'

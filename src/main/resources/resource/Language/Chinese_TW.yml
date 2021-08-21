@@ -1,0 +1,9 @@
+LogMessage:
+  Reload: '§a重新讀取設定檔。'
+  Disable: '§4FancyAction 卸載。'
+  LoadFancyCore: '§aFancyCore 已加載。'
+  UnLoadFancyCore:
+    - '§4*** FancyCore未安裝或未啟用。 ***'
+    - '§4*** FancyAction將被卸載。 ***'
+OpMessage:
+  Reload: '§e[FancyAction] §a重新讀取設定檔。'

@@ -1,6 +1,12 @@
 name: FancyAction
 version: @version@
 main: com.daxton.fancyaction.FancyAction
-api-version: 1.16
+api-version: 1.13
 prefix: FancyAction
+softdepend: [FancyCore]
 authors: [ s99889989 ]
+description: action
+commands:
+  fancyaction:
+    description: Basic instructions.
+    aliases: faction

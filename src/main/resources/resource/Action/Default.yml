@@ -1,0 +1,34 @@
+#此為預設動作，不需要權限。
+#This is the default action and does not require permission.
+Action:
+
+#攻擊顯示數字(向上)
+#Attack display damage (up)
+#-------------------------------------------------------------------------#
+- Action[a=AttackDisplayUp] ~onAttack
+
+#攻擊顯示數字(向上) (暴擊)
+#Attack display damage (up)(Critical)
+#-------------------------------------------------------------------------#
+- Action[a=AttackDisplayUpCrit] ~onCrit
+
+#攻擊顯示數字(向上) (魔法)
+#Attack display damage (up)(Magic)
+#-------------------------------------------------------------------------#
+- Action[a=AttackDisplayUp] ~onMagic
+
+#攻擊顯示數字(向上) (魔法暴擊)
+#Attack display damage (up)(Magic Critical)
+#-------------------------------------------------------------------------#
+- Action[a=AttackDisplayUpCrit] ~onMCrit
+
+#攻擊顯示數字(向上) (失敗)
+#Attack display damage (up)(Fail)
+#-------------------------------------------------------------------------#
+- Action[a=AttackDisplayUpMiss] ~onAtkMiss
+
+
+#-------------------------------------------------------------------------#
+
+
+

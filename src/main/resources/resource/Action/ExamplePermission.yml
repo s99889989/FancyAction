@@ -1,0 +1,4 @@
+#需要權限。 fancyaction.examplepermission
+#Need permission. fancyaction.examplepermission
+Action:
+- Action[a=Particle-Remove] ~onJoin

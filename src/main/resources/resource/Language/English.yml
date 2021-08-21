@@ -1,0 +1,9 @@
+LogMessage:
+  Reload: '§aRe-read the configuration file.'
+  Disable: '§4FancyAction uninstall.'
+  LoadFancyCore: '§aLoaded FancyCore.'
+  UnLoadFancyCore:
+    - '§4*** FancyCore is not installed or not enabled. ***'
+    - '§4*** FancyAction will be disabled. ***'
+OpMessage:
+  Reload: '§e[FancyAction] §aRe-read the configuration file.'
