@@ -1,10 +1,9 @@
 package com.daxton.fancyaction.listener;
 
-
-import com.daxton.fancyaction.api.PlayerDataAction;
-import com.daxton.fancyaction.manager.PlayerManagerAction;
 import com.daxton.fancyaction.other.TriggerAction;
+import com.daxton.fancycore.FancyCore;
 import com.daxton.fancycore.manager.PlayerManagerCore;
+import com.daxton.fancycore.other.playerdata.ItemCD;
 import com.daxton.fancycore.other.playerdata.PlayerDataFancy;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -31,10 +30,11 @@ public class PlayerListener implements Listener {
         UUID uuid = player.getUniqueId();
         TriggerAction.onPlayer(player, null, "~onjoin");
         //玩家動作Data
-        PlayerManagerAction.player_PlayerData.putIfAbsent(uuid, new PlayerDataAction());
+        //PlayerManagerAction.player_PlayerData.putIfAbsent(uuid, new PlayerDataAction());
         //玩家的F狀態
         PlayerDataFancy playerDataFancy = PlayerManagerCore.player_Data_Map.get(uuid);
         playerDataFancy.player_F = false;
+
     }
 
     //當玩家登出
@@ -45,7 +45,7 @@ public class PlayerListener implements Listener {
         TriggerAction.onPlayer(player, null, "~onquit");
 
         //玩家動作Data
-        PlayerManagerAction.player_PlayerData.remove(uuid);
+        //PlayerManagerAction.player_PlayerData.remove(uuid);
 
     }
 
@@ -135,19 +135,25 @@ public class PlayerListener implements Listener {
         Block block = event.getClickedBlock();
         //左鍵點擊空氣
         if(action == Action.LEFT_CLICK_AIR){
-            TriggerAction.onPlayer(player, null, "~leftclickair");
+            if(!ItemCD.getLeft(player)){
+                TriggerAction.onPlayer(player, null, "~leftclickair");
+            }
             return;
         }
         //左鍵點擊方塊
         if(action == Action.LEFT_CLICK_BLOCK){
-            TriggerAction.onPlayer(player, null, "~leftclickblock");
+            if(!ItemCD.getLeft(player)){
+                TriggerAction.onPlayer(player, null, "~leftclickblock");
+            }
             return;
         }
         //確定是主手
         if(equipmentSlot == EquipmentSlot.HAND){
             //右鍵點擊空氣
             if(action == Action.RIGHT_CLICK_AIR){
-                TriggerAction.onPlayer(player, null, "~rightclickair");
+                if(!ItemCD.getRight(player)){
+                    TriggerAction.onPlayer(player, null, "~rightclickair");
+                }
                 return;
             }
             //右鍵點擊方塊
@@ -171,7 +177,9 @@ public class PlayerListener implements Listener {
                         return;
                     }
                 }
-                TriggerAction.onPlayer(player, null, "~rightclickblock");
+                if(!ItemCD.getRight(player)){
+                    TriggerAction.onPlayer(player, null, "~rightclickblock");
+                }
                 return;
             }
         }
@@ -202,38 +210,42 @@ public class PlayerListener implements Listener {
     @EventHandler
     public void onItemHeld(PlayerItemHeldEvent event){
         Player player = event.getPlayer();
+
         int key = event.getNewSlot();
-        switch(key){
-            case 0:
-                TriggerAction.onPlayer(player, null, "~onkey1");
-                break;
-            case 1:
-                TriggerAction.onPlayer(player, null, "~onkey2");
-                break;
-            case 2:
-                TriggerAction.onPlayer(player, null, "~onkey3");
-                break;
-            case 3:
-                TriggerAction.onPlayer(player, null, "~onkey4");
-                break;
-            case 4:
-                TriggerAction.onPlayer(player, null, "~onkey5");
-                break;
-            case 5:
-                TriggerAction.onPlayer(player, null, "~onkey6");
-                break;
-            case 6:
-                TriggerAction.onPlayer(player, null, "~onkey7");
-                break;
-            case 7:
-                TriggerAction.onPlayer(player, null, "~onkey8");
-                break;
-            case 8:
-                TriggerAction.onPlayer(player, null, "~onkey9");
-                break;
+        int oldKey = event.getPreviousSlot();
+        if(key != oldKey){
+            switch(key){
+                case 0:
+                    TriggerAction.onPlayer(player, null, "~onkey1");
+                    break;
+                case 1:
+                    TriggerAction.onPlayer(player, null, "~onkey2");
+                    break;
+                case 2:
+                    TriggerAction.onPlayer(player, null, "~onkey3");
+                    break;
+                case 3:
+                    TriggerAction.onPlayer(player, null, "~onkey4");
+                    break;
+                case 4:
+                    TriggerAction.onPlayer(player, null, "~onkey5");
+                    break;
+                case 5:
+                    TriggerAction.onPlayer(player, null, "~onkey6");
+                    break;
+                case 6:
+                    TriggerAction.onPlayer(player, null, "~onkey7");
+                    break;
+                case 7:
+                    TriggerAction.onPlayer(player, null, "~onkey8");
+                    break;
+                case 8:
+                    TriggerAction.onPlayer(player, null, "~onkey9");
+                    break;
+            }
         }
 
-
     }
+
 
 }

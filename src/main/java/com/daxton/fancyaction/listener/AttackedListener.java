@@ -3,8 +3,11 @@ package com.daxton.fancyaction.listener;
 import com.daxton.fancyaction.FancyAction;
 import com.daxton.fancyaction.config.FileConfig;
 import com.daxton.fancyaction.other.TriggerAction;
+import com.daxton.fancycore.FancyCore;
 import com.daxton.fancycore.api.other.DigitConversion;
 import com.daxton.fancycore.other.hologram.FloatMessage;
+import net.citizensnpcs.api.CitizensAPI;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Entity;
@@ -23,9 +26,18 @@ public class AttackedListener implements Listener {
     public void onAttacked(EntityDamageByEntityEvent event){
         Entity entity = event.getEntity();
         Entity killer = event.getDamager();
-        if(!(entity instanceof Player) || !(killer instanceof LivingEntity)){
+        if(Bukkit.getServer().getPluginManager().getPlugin("Citizens") !=null){
+            if(CitizensAPI.getNPCRegistry().isNPC(entity)){
+                return;
+            }
+        }
+        if(entity.getCustomName() != null && entity.getCustomName().equals("ModleEngine")){
             return;
         }
+        if(!(entity instanceof Player)){
+            return;
+        }
+
         Player damaged = (Player) entity;
         LivingEntity killerLiving = (LivingEntity) killer;
         //當玩家被攻擊

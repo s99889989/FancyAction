@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'com.daxton'
-version = '1.0'
+version = '1.1.1'
 
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
@@ -20,13 +20,20 @@ repositories {
         name = 'sonatype'
         url = 'https://oss.sonatype.org/content/groups/public/'
     }
+    maven {
+        name = 'Citizens'
+        url = 'http://repo.citizensnpcs.co/'
+    }
 }
 
 dependencies {
     compileOnly 'com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT'
 
-    compileOnly fileTree(dir: 'lib', include: ['FancyCore-1.1.6.jar'])
+    compileOnly 'net.citizensnpcs:citizensapi:2.0.20-SNAPSHOT'
+
+    compileOnly fileTree(dir: 'lib', include: ['FancyCore-1.1.8.jar'])
     compileOnly fileTree(dir: 'lib', include: ['FMythicLib-1.1.2-173.jar'])
+
 }
 
 processResources {
