@@ -78,6 +78,9 @@ public class FancyListener implements Listener {
 				return;
 			}
 		}
+		if(event.getDamager() instanceof Player){
+			return;
+		}
 
 		Entity entity = Convert.convertEntity(event.getDamager());
 

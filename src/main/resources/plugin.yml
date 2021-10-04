@@ -3,7 +3,7 @@ version: @version@
 main: com.daxton.fancyaction.FancyAction
 api-version: 1.13
 prefix: FancyAction
-softdepend: [MythicLib, FancyCore, Citizens, ModelEngine]
+softdepend: [MythicLib, FancyCore, FancyEquipment, Citizens, ModelEngine]
 authors: [ s99889989 ]
 description: action
 commands:

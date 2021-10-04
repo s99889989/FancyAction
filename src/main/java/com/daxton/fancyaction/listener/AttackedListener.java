@@ -3,7 +3,7 @@ package com.daxton.fancyaction.listener;
 import com.daxton.fancyaction.FancyAction;
 import com.daxton.fancyaction.config.FileConfig;
 import com.daxton.fancyaction.other.TriggerAction;
-import com.daxton.fancycore.FancyCore;
+import com.daxton.fancycore.api.aims.entity.Convert;
 import com.daxton.fancycore.api.other.DigitConversion;
 import com.daxton.fancycore.other.hologram.FloatMessage;
 import net.citizensnpcs.api.CitizensAPI;
@@ -39,7 +39,9 @@ public class AttackedListener implements Listener {
         }
 
         Player damaged = (Player) entity;
-        LivingEntity killerLiving = (LivingEntity) killer;
+
+        LivingEntity killerLiving = (LivingEntity) Convert.convertEntity2(killer);
+
         //當玩家被攻擊
         TriggerAction.onPlayer(damaged, killerLiving, "~ondamaged");
 

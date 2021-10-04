@@ -1,7 +1,6 @@
 package com.daxton.fancyaction.listener;
 
 import com.daxton.fancyaction.other.TriggerAction;
-import com.daxton.fancycore.FancyCore;
 import com.daxton.fancycore.manager.PlayerManagerCore;
 import com.daxton.fancycore.other.playerdata.ItemCD;
 import com.daxton.fancycore.other.playerdata.PlayerDataFancy;

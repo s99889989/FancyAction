@@ -12,15 +12,26 @@ public class TriggerAction {
 	//玩家觸發動作
 	public static void onPlayer(Player player, LivingEntity target, String triggerName){
 
-		//玩家裝備動作
+
 		PlayerDataFancy playerDataFancy = PlayerManagerCore.player_Data_Map.get(player.getUniqueId());
 		if(playerDataFancy != null){
+			//玩家裝備動作
 			playerDataFancy.eqm_Action_Map.forEach((s, stringStringMap) -> {
 				MapGetKey mapGetKey =  new MapGetKey(stringStringMap, player, target);
 				String targetString = mapGetKey.getString(new String[]{"triggerkey"}, "");
 				if(targetString.equalsIgnoreCase(triggerName)){
 					TaskAction.execute(player, target, stringStringMap, null, (int)(Math.random()*Integer.MAX_VALUE)+"");
 				}
+			});
+			//玩家職業動作
+			playerDataFancy.class_Action_Map.forEach((s, stringStringMapList) -> {
+				stringStringMapList.forEach(stringStringMap->{
+					MapGetKey mapGetKey =  new MapGetKey(stringStringMap, player, target);
+					String targetString = mapGetKey.getString(new String[]{"triggerkey"}, "");
+					if(targetString.equalsIgnoreCase(triggerName)){
+						TaskAction.execute(player, target, stringStringMap, null, (int)(Math.random()*Integer.MAX_VALUE)+"");
+					}
+				});
 			});
 		}
 
