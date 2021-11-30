@@ -3,6 +3,7 @@ package com.daxton.fancyaction;
 import com.daxton.fancyaction.command.MainCommand;
 import com.daxton.fancyaction.command.TabCommand;
 import com.daxton.fancyaction.config.FileConfig;
+import com.daxton.fancyaction.listener.ModListener;
 import com.daxton.fancyaction.listener.attack.AttackListener;
 import com.daxton.fancyaction.listener.AttackedListener;
 import com.daxton.fancyaction.listener.PlayerListener;
@@ -36,6 +37,7 @@ public final class FancyAction extends JavaPlugin {
         //監聽
         Bukkit.getPluginManager().registerEvents(new PlayerListener(), fancyAction);
         Bukkit.getPluginManager().registerEvents(new AttackedListener(), fancyAction);
+        Bukkit.getPluginManager().registerEvents(new ModListener(), fancyAction);
         //傷害核心
         AttackCore.setCore();
 
@@ -47,4 +49,10 @@ public final class FancyAction extends JavaPlugin {
             fancyAction.getLogger().info(languageConfig.getString("LogMessage.Disable"));
         }
     }
+
+    public static void sendLogger(String message){
+        fancyAction.getLogger().info(message);
+    }
+
+
 }
